@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { GraduationCap, ArrowLeft, CheckCircle, Upload, Copy, Check } from "lucide-react"
+import { GraduationCap, ArrowLeft, CheckCircle, Upload, Copy, Check, Download } from "lucide-react"
 import { getApplicationById, getCourses, savePayment, type Payment } from "@/lib/data-store"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -113,11 +113,63 @@ export default function PaymentPage() {
     setStep("success")
   }
 
+  const handleDownloadReceipt = () => {
+    const displayAmount = isMonthlyFee ? "₹10,000" : getCourses().find((c) => c.id === application?.courseId)?.fee
+
+    const receiptContent = `
+EXCEL ACADEMY
+Leading Coaching Institute
+================================================
+
+PAYMENT RECEIPT
+================================================
+
+Receipt ID:        ${paymentId}
+Date:              ${new Date().toLocaleDateString("en-IN")}
+
+STUDENT DETAILS:
+${isMonthlyFee ? `Student ID:        ${application?.id}` : `Application ID:    ${application?.id}`}
+${!isMonthlyFee ? `Student Name:      ${application?.studentName}` : ""}
+Course:            ${application?.courseName}
+
+PAYMENT DETAILS:
+${isMonthlyFee ? "Monthly Fee:" : "Total Amount:"}       ${displayAmount}
+UPI ID:            ${paymentData.upiId}
+Transaction ID:    ${paymentData.transactionId}
+Payment Status:    Pending Verification
+
+================================================
+
+This receipt confirms that your payment has been 
+submitted and is under verification.
+
+You will receive a confirmation email once the
+payment is verified by our team within 24 hours.
+
+For any queries, please contact:
+Phone: +91 98765 43210
+Email: info@excelacademy.com
+
+================================================
+Thank you for choosing Excel Academy!
+`
+
+    const blob = new Blob([receiptContent], { type: "text/plain" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `payment-receipt-${paymentId}.txt`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
   if (step === "success") {
     return (
       <div className="min-h-screen bg-background">
         <header className="border-b">
-          <div className="container flex h-16 items-center justify-between">
+          <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
             <div className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6 text-primary" />
               <span className="text-xl font-semibold">Excel Academy</span>
@@ -125,7 +177,7 @@ export default function PaymentPage() {
           </div>
         </header>
 
-        <div className="container py-12 md:py-24">
+        <div className="container mx-auto px-4 md:px-6 py-12 md:py-24 max-w-7xl">
           <div className="max-w-2xl mx-auto">
             <Card className="text-center">
               <CardHeader>
@@ -152,7 +204,11 @@ export default function PaymentPage() {
                   </ol>
                 </div>
 
-                <div className="pt-4">
+                <div className="flex flex-col gap-3 pt-4">
+                  <Button onClick={handleDownloadReceipt} variant="outline" className="w-full bg-transparent">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Receipt
+                  </Button>
                   <Button className="w-full" asChild>
                     <Link href="/">Back to Home</Link>
                   </Button>
@@ -172,7 +228,7 @@ export default function PaymentPage() {
     return (
       <div className="min-h-screen bg-background">
         <header className="border-b">
-          <div className="container flex h-16 items-center justify-between">
+          <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
             <div className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6 text-primary" />
               <span className="text-xl font-semibold">Excel Academy</span>
@@ -184,7 +240,7 @@ export default function PaymentPage() {
           </div>
         </header>
 
-        <div className="container py-8 md:py-12">
+        <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-7xl">
           <div className="max-w-3xl mx-auto">
             <div className="mb-8">
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
@@ -196,7 +252,6 @@ export default function PaymentPage() {
             </div>
 
             <div className="space-y-6">
-              {/* Application Details */}
               <Card>
                 <CardHeader>
                   <CardTitle>{isMonthlyFee ? "Payment Details" : "Application Details"}</CardTitle>
@@ -223,7 +278,6 @@ export default function PaymentPage() {
                 </CardContent>
               </Card>
 
-              {/* UPI Payment Details */}
               <Card>
                 <CardHeader>
                   <CardTitle>UPI Payment Details</CardTitle>
@@ -259,7 +313,6 @@ export default function PaymentPage() {
                 </CardContent>
               </Card>
 
-              {/* Payment Confirmation Form */}
               <form onSubmit={handlePaymentSubmit}>
                 <Card>
                   <CardHeader>
@@ -339,7 +392,7 @@ export default function PaymentPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
             <span className="text-xl font-semibold">Excel Academy</span>
@@ -353,7 +406,7 @@ export default function PaymentPage() {
         </div>
       </header>
 
-      <div className="container py-12 md:py-24">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-24 max-w-7xl">
         <div className="max-w-4xl mx-auto">
           <Tabs defaultValue="admission" className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-8">
@@ -361,7 +414,6 @@ export default function PaymentPage() {
               <TabsTrigger value="monthly">Monthly Fee Payment</TabsTrigger>
             </TabsList>
 
-            {/* New Admission Fee Tab */}
             <TabsContent value="admission">
               <Card>
                 <CardHeader>
@@ -398,7 +450,6 @@ export default function PaymentPage() {
               </Card>
             </TabsContent>
 
-            {/* Monthly Fee Payment Tab */}
             <TabsContent value="monthly">
               <Card>
                 <CardHeader>

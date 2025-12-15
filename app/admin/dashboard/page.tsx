@@ -77,7 +77,7 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b bg-background sticky top-0 z-50">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
             <span className="text-xl font-semibold">Excel Academy</span>
@@ -95,7 +95,7 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      <div className="container py-8">
+      <div className="container mx-auto px-4 md:px-6 py-8 max-w-7xl">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
           <p className="text-muted-foreground">Manage applications and payments</p>
@@ -468,7 +468,7 @@ export default function AdminDashboard() {
                     Approve
                   </Button>
                   <Button
-                    className="flex-1 bg-transparent"
+                    className="flex-1"
                     variant="destructive"
                     onClick={() => handleApplicationAction(selectedApplication.id, "rejected")}
                   >
@@ -484,10 +484,10 @@ export default function AdminDashboard() {
 
       {/* Payment Detail Modal */}
       <Dialog open={!!selectedPayment} onOpenChange={() => setSelectedPayment(null)}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Payment Details</DialogTitle>
-            <DialogDescription>Review the payment information and screenshot</DialogDescription>
+            <DialogDescription>Review and verify payment information</DialogDescription>
           </DialogHeader>
           {selectedPayment && (
             <div className="space-y-6">
@@ -515,16 +515,16 @@ export default function AdminDashboard() {
                   <p className="font-medium">{selectedPayment.studentName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Amount</p>
-                  <p className="font-bold text-lg text-primary">₹{selectedPayment.amount.toLocaleString("en-IN")}</p>
-                </div>
-                <div>
                   <p className="text-sm text-muted-foreground">Course</p>
                   <p className="font-medium">{selectedPayment.courseName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Application ID</p>
-                  <p className="font-mono font-medium">{selectedPayment.applicationId}</p>
+                  <p className="text-sm text-muted-foreground">Amount</p>
+                  <p className="text-lg font-bold text-primary">₹{selectedPayment.amount.toLocaleString("en-IN")}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Submitted At</p>
+                  <p className="font-medium">{new Date(selectedPayment.submittedAt).toLocaleString()}</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">UPI ID</p>
@@ -539,10 +539,10 @@ export default function AdminDashboard() {
               {selectedPayment.screenshot && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-2">Payment Screenshot</p>
-                  <div className="border rounded-lg p-2 bg-muted/50">
+                  <div className="border rounded-lg p-2">
                     <img
                       src={selectedPayment.screenshot || "/placeholder.svg"}
-                      alt="Payment proof"
+                      alt="Payment screenshot"
                       className="max-h-96 mx-auto"
                     />
                   </div>
@@ -556,7 +556,7 @@ export default function AdminDashboard() {
                     Verify Payment
                   </Button>
                   <Button
-                    className="flex-1 bg-transparent"
+                    className="flex-1"
                     variant="destructive"
                     onClick={() => handlePaymentAction(selectedPayment.id, "rejected")}
                   >

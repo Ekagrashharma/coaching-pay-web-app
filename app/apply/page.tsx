@@ -95,7 +95,7 @@ export default function ApplyPage() {
     return (
       <div className="min-h-screen bg-background">
         <header className="border-b">
-          <div className="container flex h-16 items-center justify-between">
+          <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
             <div className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6 text-primary" />
               <span className="text-xl font-semibold">Excel Academy</span>
@@ -103,7 +103,7 @@ export default function ApplyPage() {
           </div>
         </header>
 
-        <div className="container py-12 md:py-24">
+        <div className="container mx-auto px-4 md:px-6 py-12 md:py-24 max-w-7xl">
           <div className="max-w-2xl mx-auto">
             <Card className="text-center">
               <CardHeader>
@@ -151,7 +151,7 @@ export default function ApplyPage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
             <span className="text-xl font-semibold">Excel Academy</span>
@@ -165,7 +165,7 @@ export default function ApplyPage() {
         </div>
       </header>
 
-      <div className="container py-8 md:py-12">
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-7xl">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">Admission Application</h1>

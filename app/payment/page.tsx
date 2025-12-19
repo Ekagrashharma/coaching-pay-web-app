@@ -172,7 +172,7 @@ Thank you for choosing Excel Academy!
           <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
             <div className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6 text-primary" />
-              <span className="text-xl font-semibold">Excel Academy</span>
+              <span className="text-xl font-semibold">Adhyan Insitute </span>
             </div>
           </div>
         </header>
@@ -231,7 +231,7 @@ Thank you for choosing Excel Academy!
           <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
             <div className="flex items-center gap-2">
               <GraduationCap className="h-6 w-6 text-primary" />
-              <span className="text-xl font-semibold">Excel Academy</span>
+              <span className="text-xl font-semibold">Adhyan Insitute </span>
             </div>
             <Button variant="ghost" onClick={() => setStep("lookup")}>
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -395,7 +395,7 @@ Thank you for choosing Excel Academy!
         <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
-            <span className="text-xl font-semibold">Excel Academy</span>
+            <span className="text-xl font-semibold">Adhyan Insitute </span>
           </div>
           <Button variant="ghost" asChild>
             <Link href="/">

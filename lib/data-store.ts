@@ -22,7 +22,7 @@ export interface Application {
   address: string
   city: string
   state: string
-  pincode: string
+  pincode?: string
   courseId: number
   courseName: string
   class: string
@@ -30,7 +30,7 @@ export interface Application {
   percentage: string
   status: "pending" | "approved" | "rejected"
   submittedAt: string
-  photo?: string
+  photo: string
 }
 
 export interface Payment {

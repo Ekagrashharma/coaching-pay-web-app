@@ -50,7 +50,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6 flex h-16 items-center justify-between max-w-7xl">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
-            <span className="text-xl font-semibold">Adhyan Coaching insitute</span>
+            <span className="text-xl font-semibold">Adhyan insitute</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#courses" className="text-sm font-medium hover:text-primary transition-colors">
@@ -64,11 +64,11 @@ export default function HomePage() {
             </Link>
           </nav>
           <div className="flex items-center gap-3">
-            <Button variant="ghost" asChild className="hidden sm:inline-flex">
+            <Button variant="ghost" asChild className=" sm:inline-flex">
               <Link href="/admin/login">Admin</Link>
             </Button>
             <Button asChild>
-              <Link href="/apply">Apply Now</Link>
+              <Link href="/apply" className="hidden sm:inline-flex">Apply Now</Link>
             </Button>
           </div>
         </div>

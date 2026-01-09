@@ -1,5 +1,8 @@
 // Client-side data storage using localStorage for MVP demo
 
+import { courses } from "@/utils/Constant/course.constant"
+import { IdCard } from "lucide-react"
+
 export interface Course {
   id: number
   name: string
@@ -186,42 +189,6 @@ export function getPaymentById(id: string): Payment | null {
 // Course data
 export function getCourses(): Course[] {
   return [
-    {
-      id: 1,
-      name: "JEE Main & Advanced",
-      duration: "2 Years",
-      batch: "2024-2026",
-      fee: "₹1,20,000",
-      description: "Comprehensive program for engineering entrance preparation",
-      features: ["Expert Faculty", "Daily Practice", "Mock Tests", "Study Material"],
-    },
-    {
-      id: 2,
-      name: "NEET UG Preparation",
-      duration: "2 Years",
-      batch: "2024-2026",
-      fee: "₹1,00,000",
-      description: "Complete medical entrance coaching with proven track record",
-      features: ["NCERT Focus", "Test Series", "Doubt Sessions", "Online Resources"],
-    },
-    {
-      id: 3,
-      name: "Foundation Course (Class 9-10)",
-      duration: "1 Year",
-      batch: "2024-2025",
-      fee: "₹50,000",
-      description: "Build strong fundamentals for competitive exams",
-      features: ["Board + Competitive", "Concept Building", "Regular Assessment", "Parent Meetings"],
-    },
-    {
-      id: 4,
-      name: "Class 11-12 CBSE",
-      duration: "2 Years",
-      batch: "2024-2026",
-      fee: "₹60,000",
-      description: "Board exam preparation with competitive edge",
-      features: ["Board Pattern", "Sample Papers", "Revision Classes", "Career Guidance"],
-    },
   ]
 }
 

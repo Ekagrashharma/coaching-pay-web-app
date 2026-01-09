@@ -1,0 +1,38 @@
+ export const courses = [
+    {
+      id: 1,
+      name: "Class 9 Batch: shivam sir",
+      duration: "1 Month",
+      batch: "9th",
+      fee: "₹1,20,000",
+      description: "Comprehensive program for engineering entrance preparation",
+      features: ["Expert Faculty", "Daily Practice", "Mock Tests", "Study Material"],
+    },
+    {
+      id: 2,
+      name: "NEET UG Preparation",
+      duration: "2 Years",
+      batch: "2024-2026",
+      fee: "₹1,00,000",
+      description: "Complete medical entrance coaching with proven track record",
+      features: ["NCERT Focus", "Test Series", "Doubt Sessions", "Online Resources"],
+    },
+    {
+      id: 3,
+      name: "Foundation Course (Class 9-10)",
+      duration: "1 Year",
+      batch: "2024-2025",
+      fee: "₹50,000",
+      description: "Build strong fundamentals for competitive exams",
+      features: ["Board + Competitive", "Concept Building", "Regular Assessment", "Parent Meetings"],
+    },
+    {
+      id: 4,
+      name: "Class 11-12 CBSE",
+      duration: "2 Years",
+      batch: "2024-2026",
+      fee: "₹60,000",
+      description: "Board exam preparation with competitive edge",
+      features: ["Board Pattern", "Sample Papers", "Revision Classes", "Career Guidance"],
+    },
+  ]

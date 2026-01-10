@@ -188,8 +188,7 @@ export function getPaymentById(id: string): Payment | null {
 
 // Course data
 export function getCourses(): Course[] {
-  return [
-  ]
+  return []
 }
 
 export function getCourseById(id: number): Course | null {

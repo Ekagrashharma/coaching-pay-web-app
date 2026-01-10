@@ -47,7 +47,7 @@ export default function AdminDashboard() {
     router.push("/admin/login")
   }
 
-  const handleApplicationAction = (id: string, status: "approved" | "rejected") => {
+/* const handleApplicationAction = (id: string, status: "approved" | "rejected") => {
     updateApplication(id, { status })
     loadData()
     setSelectedApplication(null)
@@ -57,7 +57,7 @@ export default function AdminDashboard() {
     updatePayment(id, { status })
     loadData()
     setSelectedPayment(null)
-  }
+  }*/
 
   if (!user || user.role !== "admin") {
     return null

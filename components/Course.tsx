@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { BookOpen, Users, Award, CheckCircle, ArrowRight, GraduationCap } from "lucide-react"
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { courses } from "../utils/Constant/course.constant"
+import { coursesData } from "../utils/Constant/course.constant"
 
 const Course = () => {
     return (
@@ -17,7 +17,7 @@ const Course = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {courses.map((course) => (
+                {coursesData.map((course) => (
                 <Card key={course.id} className="flex flex-col hover:shadow-lg transition-shadow">
                     <CardHeader>
                     <CardTitle className="text-xl text-balance">{course.name}</CardTitle>

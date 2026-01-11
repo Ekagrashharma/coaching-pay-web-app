@@ -13,6 +13,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { GraduationCap, ArrowLeft, CheckCircle } from "lucide-react"
 import { getCourses, saveApplication, type Application } from "@/lib/data-store"
+import { coursesData } from "@/utils/Constant/course.constant"
+
 
 export default function ApplyPage() {
   const router = useRouter()
@@ -60,7 +62,7 @@ export default function ApplyPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    const course = courses.find((c) => c.id === Number(formData.courseId))
+    const course = coursesData.find((c) => c.id === Number(formData.courseId))
     if (!course) return
 
     const newApplication: Application = {
@@ -192,7 +194,7 @@ export default function ApplyPage() {
                         <SelectValue placeholder="Choose a course" />
                       </SelectTrigger>
                       <SelectContent>
-                        {courses.map((course) => (
+                        {coursesData.map((course) => (
                           <SelectItem key={course.id} value={course.id.toString()}>
                             {course.name} - {course.fee}
                           </SelectItem>

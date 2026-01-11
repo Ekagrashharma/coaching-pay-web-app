@@ -1,6 +1,6 @@
 // Client-side data storage using localStorage for MVP demo
 
-import { courses } from "@/utils/Constant/course.constant"
+import { coursesData } from "@/utils/Constant/course.constant"
 import { IdCard } from "lucide-react"
 
 export interface Course {
@@ -72,7 +72,7 @@ export function initializeDefaultUsers() {
       id: "1",
       email: "admin@academy.com",
       role: "admin",
-      name: "Administrator",
+      name: "Ekagra",
     }
     saveUsers([defaultAdmin])
   }

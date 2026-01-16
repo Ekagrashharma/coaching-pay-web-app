@@ -24,7 +24,6 @@ const Header = () => {
                 </Link>
             </nav>
             <div className="flex items-center gap-3">
-                // issue in phone screen : admin btn is not showing 
                 <Button variant="ghost" asChild className=" sm:inline-flex">
                 <Link href="/admin/login">Admin</Link>
                 </Button>

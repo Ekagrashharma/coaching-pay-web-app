@@ -1,8 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { BookOpen, Users, Award, CheckCircle, ArrowRight, GraduationCap } from "lucide-react"
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import React from 'react'
+
 
 const About = () => {
     return (

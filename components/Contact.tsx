@@ -21,7 +21,7 @@ const Contact = () => {
                     </Link>
                 </Button>
                 <div className="text-sm text-muted-foreground pt-3">
-                    Questions? Call us at <span className="font-medium text-foreground">+91 98765 43210</span>
+                    Questions? Call us at <span className="font-medium text-foreground">+91 80067 18114</span>
                 </div>
                 </div>
             </div>

@@ -80,6 +80,12 @@ export default function PaymentPage() {
       return;
     }
 
+    if (app.status !== "approved") {
+      setError(
+        "Application is not approved yet. Please wait for admin approval.",
+      );
+      return;
+    }
     // if (app.status !== "approved") {
     //   setError(
     //     "Application is not approved yet. Please wait for admin approval.",
@@ -141,6 +147,55 @@ export default function PaymentPage() {
     setPaymentId(newPayment.id);
     setStep("success");
   };
+
+  const handleDownloadReceipt = () => {
+    const displayAmount = isMonthlyFee
+      ? "₹10,000"
+      : getCourses().find((c) => c.id === application?.courseId)?.fee;
+
+    const receiptContent = `
+ADHYAN ACADEMY
+Leading Coaching Institute
+
+PAYMENT RECEIPT
+
+Receipt ID:        ${paymentId}
+Date:              ${new Date().toLocaleDateString("en-IN")}
+
+STUDENT DETAILS:
+${isMonthlyFee ? `Student ID:        ${application?.id}` : `Application ID:    ${application?.id}`}
+${!isMonthlyFee ? `Student Name:      ${application?.studentName}` : ""}
+Course:            ${application?.courseName}
+
+PAYMENT DETAILS:
+${isMonthlyFee ? "Monthly Fee:" : "Total Amount:"}       ${displayAmount}
+UPI ID:            ${paymentData.upiId}
+Transaction ID:    ${paymentData.transactionId}
+Payment Status:    Pending Verification
+
+
+This receipt confirms that your payment has been 
+submitted and is under verification.
+
+You will receive a confirmation email once the
+payment is verified by our team within 24 hours.
+
+For any queries, please contact:
+Phone: +91 98765 43210
+Email: info@excelacademy.com
+
+Thank you for choosing Excel Academy!
+`;
+
+    const blob = new Blob([receiptContent], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `payment-receipt-${paymentId}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 
   // const handleDownloadReceipt = () => {
   //   const displayAmount = isMonthlyFee
@@ -439,6 +494,20 @@ export default function PaymentPage() {
                           )}
                         </Button>
                       </div>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => copyToClipboard("academy@paytm")}
+                        className="bg-transparent"
+                      >
+                        {copied ? (
+                          <Check className="h-4 w-4" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </Button>
+                      <Image
+                        src="/QR.jpg" // inside 
                       <Image
                         src="/Untitled.jpeg" // inside
                         alt="Profile"

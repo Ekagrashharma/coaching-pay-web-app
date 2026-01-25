@@ -7,7 +7,7 @@ import { coursesData } from "../utils/Constant/course.constant"
 
 const Course = () => {
     return (
-        <section id="courses" className="bg-muted/30">
+        <section id="course" className="bg-muted/30">
             <div className="container mx-auto px-4 md:px-6 py-12 md:py-24 max-w-7xl">
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Courses</h2>
@@ -40,8 +40,8 @@ const Course = () => {
                     </div>
 
                     <div className="space-y-2 flex-1">
-                        {course.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm">
+                        {course.features.map((feature, id) => (
+                        <div key={id} className="flex items-center gap-2 text-sm">
                             <CheckCircle className="h-4 w-4 text-primary shrink-0" />
                             <span>{feature}</span>
                         </div>

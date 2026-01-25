@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import type React from "react";
 import { useState } from "react";
@@ -125,7 +126,7 @@ export default function PaymentPage() {
     } else {
       paymentAmount = Number.parseInt(
         getCourses()
-          .find((c) => c.id === application.courseId)
+          .find((c) => c.id === application?.courseId)
           ?.fee.replace(/[^0-9]/g, "") || "0",
       );
     }
@@ -390,7 +391,8 @@ Thank you for choosing Excel Academy!
   }
 
   if (step === "payment" && application) {
-    const course = getCourses().find((c) => c.id === application.courseId);
+    
+    const course = getCourses().find((c) => c.id === application?.courseId);
     const displayAmount = isMonthlyFee ? "₹10,000" : course?.fee;
 
     return (

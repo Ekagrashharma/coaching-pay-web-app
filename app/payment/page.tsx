@@ -509,8 +509,6 @@ Thank you for choosing Excel Academy!
                         )}
                       </Button>
                       <Image
-                        src="/QR.jpg" // inside 
-                      <Image
                         src="/Untitled.jpeg" // inside
                         alt="Profile"
                         width={300}
